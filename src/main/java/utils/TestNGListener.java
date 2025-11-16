@@ -1,5 +1,7 @@
 package utils;
 
+import manager.ApplicationManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -27,6 +29,7 @@ public class TestNGListener implements ITestListener {
         ITestListener.super.onTestFailure(result);
         logger.info("failed test ---> " + result.getMethod());
         logger.error("start test error---> " + result.getMethod());
+       // TakeScreenShot.TakeScreenshot((TakesScreenshot)new ApplicationManager().getDriver());
     }
 
     @Override
