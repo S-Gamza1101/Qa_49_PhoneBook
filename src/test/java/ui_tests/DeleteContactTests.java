@@ -22,7 +22,7 @@ public class DeleteContactTests extends ApplicationManager {
     AddPage addPage;
     int numberOfContacts;
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void login(){
         homePage = new HomePage(getDriver());
         loginPage = clickButtonHeader(HeaderMenuItem.LOGIN);
@@ -33,7 +33,7 @@ public class DeleteContactTests extends ApplicationManager {
     }
 
 
-    @Test
+    @Test (groups = {"smoke", "contact"})
     public void deleteFirstContactPositiveTest(){
         contactsPage.deleteFirstContact();
         pause(3);

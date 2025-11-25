@@ -17,16 +17,17 @@ public class LoginTests extends ApplicationManager {
     //dsc@mail.ru
     //Password123!
 
-    @Test//(retryAnalyzer = RetryAnalyzer.class)
+    @Test (groups = {"smoke", "user"})
+    //(retryAnalyzer = RetryAnalyzer.class)
     public void loginPositiveTest(){
         HomePage homePage = new HomePage(getDriver());
         homePage.clickBtnLoginHeader();
         LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.typeLoginForm("dsc@mail.ru", "Password12345555!");
+        loginPage.typeLoginForm("dsc@mail.ru", "Password123!");
         Assert.assertTrue(new ContactsPage(getDriver()).isTextContactsPresent("CONTACTS"));
     }
 
-    @Test
+    @Test(groups = "negative")
     public void loginNegativeTest_wrongPassword(){
         User user = new User("dsc@mail.ru", "ssword123!");
         HomePage homePage = new HomePage(getDriver());
